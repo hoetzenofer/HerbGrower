@@ -1,0 +1,48 @@
+{
+    "sensors": {
+        "DHT22": {
+            "type": "digital-in",
+            "pin-bcm": 4,
+            "pin-brd": 7
+        },
+        "moisture-sensor": {
+            "type": "digital-in",
+            "pin-bcm": 5,
+            "pin-brd": 29
+        }
+    },
+
+    "control": {
+        "pump": {
+            "type": "digital-out",
+            "pin-bcm": 17,
+            "pin-brd": 11
+        },
+        "lights": {
+            "type": "digital-out",
+            "pin-bcm": 27,
+            "pin-brd": 13
+        },
+        "fan": {
+            "type": "pwm-out",
+            "pin-bcm": 22,
+            "pin-brd": 15
+        },
+        "fan-flap": {
+            "type": "pwm-out",
+            "pin-bcm": 18,
+            "pin-brd": 12
+        }
+    },
+
+    "peripherals": {
+        "display": {
+            "type": "i2c",
+            "driver": "SSD1306",
+            "address": "0x3C",
+            "sda-bcm": 2,
+            "scl-bcm": 3
+        }
+        
+    }
+}
