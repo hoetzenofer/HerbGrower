@@ -1,3 +1,20 @@
 {
-    "pinout": "bcm"
+    "settings": {
+        "pinout": "bcm"
+    },
+
+    "plants": {
+        "chive": ["Allium schoenoprasum", 21.5, 0.5, 0.7],
+        "parsley": ["Petroselinum crispum", 21, 0.5, 0.6],
+        "coriander": ["Coriandrum sativum", 21, 0.5, 0.7],
+        "dill": ["Anethum graveolens", 18, 0.5, 0.8],
+        "rosemary": ["Salvia rosmarinus", 21, 0.4, 0.9],
+        "peppermint": ["Mentha *piperita", 20, 0.6, 0.6],
+        "lemonmint": ["Mentha citrata", 21, 0.6, 0.6],
+        "basil": ["Ocimum basilicum", 22.5, 0.6, 0.85],
+        "thyme": ["Thymus vulgaris", 21, 0.5, 0.8],
+        "sage": ["Salvia officinalis", 21, 0.5, 0.75],
+        "tarragon": ["Artemisia dracunculus", 21, 0.5, 0.7],
+        "oregano": ["Origanum vulgare", 21, 0.5, 0.8]
+    }
 }
