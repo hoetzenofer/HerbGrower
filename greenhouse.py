@@ -25,13 +25,13 @@ class Control:
     def __init__(self, meta: dict, pinout: str):
         self.meta = meta
         self.pinout = pinout
-    
+
     def setup(self) -> None:
         for name, data in self.meta:
             GPIO.setup(data[f"pin-{self.pinout}"], GPIO.OUT)
         self.fan_pwm = GPIO.PWM(self.meta["fan"][f"pin-{self.pinout}"])
         self.fan_pwm.start(0)
-        
+
     def irrigate(self, time: int | float) -> None:
         GPIO.output(self.meta["pump"][f"pin-{self.pinout}"], GPIO.HIGH)
         t.sleep(time)
