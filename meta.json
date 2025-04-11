@@ -39,10 +39,9 @@
         "display": {
             "type": "i2c",
             "driver": "SSD1306",
+            "resolution": [128, 64],
             "address": "0x3C",
-            "sda-bcm": 2,
-            "scl-bcm": 3
+            "pin-sda-scl-bcm": [2, 3]
         }
-        
     }
 }

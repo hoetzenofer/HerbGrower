@@ -3,6 +3,7 @@
 import greenhouse
 import json
 import RPi.GPIO as GPIO
+import statistics as stt
 
 with open("meta.json", "r") as file:
     PINS = json.load(file)
