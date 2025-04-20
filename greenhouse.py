@@ -3,9 +3,6 @@
 import time as t
 import RPi.GPIO as GPIO
 import Adafruit_DHT as DHT
-import luma.core.interface.serial as LUMA
-from luma.oled.device import ssd1306
-import PIL.ImageFont as imgf
 
 class Sensors:
     def __init__(self, meta: dict, pinout: str):
@@ -45,16 +42,3 @@ class Control:
     def fan(self, speed: float) -> None:
         self.fan_pwm.ChangeDutyCycle(speed)
 
-class Display:
-    def __init__(self, meta: dict):
-        self.meta = meta
-
-    def setup(self):
-        serial = LUMA.i2c(port=1, address=int(self.meta["address"], 16))
-        self.device = ssd1306(serial)
-
-    def place_img(self, img: str):
-        pass
-
-    def place_text(self, text: str):
-        pass
