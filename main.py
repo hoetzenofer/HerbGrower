@@ -21,4 +21,6 @@ running = True
 while running:
     sensors.update()
     print(sensors.data)
-    t.sleep(3)
+    control.irrigate(1)
+    t.sleep(2)
+
