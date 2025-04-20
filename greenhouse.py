@@ -2,22 +2,30 @@
 
 import time as t
 import RPi.GPIO as GPIO
-import Adafruit_DHT as DHT
+import board
+import adafruit_dht as ADHT
 
 class Sensors:
     def __init__(self, meta: dict, pinout: str):
         self.meta = meta
         self.pinout = pinout
         self.data = {}
-
-    def setup(self) -> None:
-        for name, data in self.meta.items():
-            GPIO.setup(data[f"pin-{self.pinout}"], GPIO.IN)
+        
+        self.dht22 = ADHT.DHT22(board.D4)
+        GPIO.setup(self.meta["moisture-sensor"][f"pin-{self.pinout}"], GPIO.IN)
 
     def update(self) -> None:
-        humidity, temperature = DHT.read_retry(DHT.DHT22, self.meta["DHT22"][f"pin-{self.pinout}"])
-        self.data["temperature"] = temperature
-        self.data["humidity"] = humidity
+        try:
+            temperature, humidity = self.dht22.temperature, self.dht22.humidity
+            self.data["temperature"] = temperature
+            self.data["humidity"] = humidity
+        except RuntimeError as error:
+            print(error.args[0])
+            t.sleep(2.0)
+        except Exception as error:
+            self.dht22.exit()
+            raise error
+
         self.data["moisture"] = GPIO.input(self.meta["moisture-sensor"][f"pin-{self.pinout}"]) == 0
 
 class Control:
