@@ -43,7 +43,7 @@ class Sensors:
         self.data = {}
         
         # setup
-        self.dht22 = ADHT.DHT22(self.meta["DHT22"][f"pin-{self.pinout}"])
+        self.dht22 = ADHT.DHT22(gpio_to_board[self.meta["DHT22"]["pin-bcm"]])
         GPIO.setup(self.meta["moisture-sensor"][f"pin-{self.pinout}"], GPIO.IN)
 
     def update(self) -> None:
