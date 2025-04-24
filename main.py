@@ -1,6 +1,7 @@
 # main.py
 
-import greenhouse
+from greenhouse import Sensors, Control
+from debugger import Debug
 import json
 import RPi.GPIO as GPIO
 import statistics as stt
@@ -14,13 +15,13 @@ with open("config.json", "r") as file:
 
 GPIO.setmode(GPIO.BCM if SETTINGS["pinout"] == "bcm" else GPIO.BOARD)
 
-sensors = greenhouse.Sensors(PINS["sensors"], SETTINGS["pinout"])
-control = greenhouse.Control(PINS["control"], SETTINGS["pinout"])
+sensors = Sensors(PINS["sensors"], SETTINGS["pinout"])
+control = Control(PINS["control"], SETTINGS["pinout"])
+debug = Debug("debuglog.txt", True)
 
 running = True
 while running:
     sensors.update()
-    print(sensors.data)
+    debug.log(sensors.data)
     control.irrigate(1)
     t.sleep(2)
-
