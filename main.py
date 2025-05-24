@@ -4,7 +4,6 @@ from greenhouse import Sensors, Control
 from debugger import Debug
 import json
 import RPi.GPIO as GPIO
-import statistics as stt
 import time as t
 
 with open("meta.json", "r") as file:
@@ -21,7 +20,17 @@ debug = Debug("debuglog.txt", True)
 
 running = True
 while running:
-    sensors.update()
-    debug.log(sensors.data)
-    control.irrigate(1)
-    t.sleep(2)
+    try:
+        sensors.update()
+        debug.log(sensors.data)
+        control.irrigate(1)
+        t.sleep(2)
+
+    except KeyboardInterrupt:
+        running = False
+
+    except Exception as e:
+        debug.log(e)
+        running = False
+
+GPIO.cleanup()
