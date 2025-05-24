@@ -33,4 +33,9 @@ while running:
         debug.log(e)
         running = False
 
+for name, entry in PINS["control"].items():
+    pin = entry.get("pin-bcm")
+    if pin is not None:
+        GPIO.output(pin, GPIO.LOW)
+
 GPIO.cleanup()
