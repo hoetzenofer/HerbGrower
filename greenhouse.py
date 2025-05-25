@@ -66,7 +66,7 @@ class Control:
         self.pinout = pinout
         
         # setup
-        GPIO.setup(self.meta["pump"][f"pin-{self.pinout}"], GPIO.OUT)
+        GPIO.setup((self.meta["pump"][f"pin-{self.pinout}"], self.meta["lights"][f"pin-{self.pinout}"]), GPIO.OUT)
 
     def irrigate(self, time: int | float) -> None:
         GPIO.output(self.meta["pump"][f"pin-{self.pinout}"], GPIO.HIGH)
