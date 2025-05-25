@@ -22,16 +22,6 @@
             "type": "digital-out",
             "pin-bcm": 27,
             "pin-brd": 13
-        },
-        "fan": {
-            "type": "pwm-out",
-            "pin-bcm": 22,
-            "pin-brd": 15
-        },
-        "fan-flap": {
-            "type": "pwm-out",
-            "pin-bcm": 18,
-            "pin-brd": 12
         }
     },
 
@@ -45,3 +35,4 @@
         }
     }
 }
+
